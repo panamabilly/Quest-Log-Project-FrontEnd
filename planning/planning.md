@@ -14,31 +14,34 @@ Will start the project using MongoDB if I can’t figure out user authorization 
 Models
 
 User
-UserName: String
-FirstName: String
-LastName: String
-Password: String
-TimeStamp: String
+
+UserName: String;
+FirstName: String;
+LastName: String;
+Password: String;
+TimeStamp: String;
 
 Pin
-UserName: String
-Title: String
-Description: String
-Rating: Number
-Photo: Image File
-Latitude: Number
-Longitude: Number
-TimeStamp: String
+
+UserName: String;
+Title: String;
+Description: String;
+Rating: Number;
+Photo: Image File;
+Latitude: Number;
+Longitude: Number;
+TimeStamp: String;
 
 Resort
-Name: String
-State: String
-City: String
-Description: String
-Photo: Image file
-Latitude: Number
-Longitude: Number
-Website: String
+
+Name: String;
+State: String;
+City: String;
+Description: String;
+Photo: Image file;
+Latitude: Number;
+Longitude: Number;
+Website: String;
 
 ### React component hierarchy
 
