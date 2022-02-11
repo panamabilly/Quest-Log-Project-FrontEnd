@@ -47,11 +47,17 @@ Website: String
 ### User stories
 
 As a user, I want to be able to create a profile so that I can save my own pins on the map.
+
 As a user, I want to be able to pin locations that I have visited.
+
 As a user, I want to be able to add information into a form about the place that I have visited.
+
 As a user, I want to be able to upload photos to the database.
+
 As a user, I want to be able to see a gallery of the photos I have uploaded.
+
 As a user I want to be able to see the ski resorts in the Rocky Mountains on the map as pins with the Name, State, Description, Website and Photo.
+
 
 ### Wireframes
 
