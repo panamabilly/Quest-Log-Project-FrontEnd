@@ -1,0 +1,21 @@
+.popup-card {
+	width: 200px;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+label {
+	color: blueviolet;
+	font-size: 15px;
+	font-weight: bold;
+	border-bottom: 1px solid blueviolet;
+	margin: 5px 0;
+}
+
+.description-text,
+.place-text,
+.rating-text {
+	font-size: 12px;
+}
