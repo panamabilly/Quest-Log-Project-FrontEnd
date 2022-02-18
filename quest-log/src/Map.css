@@ -19,3 +19,31 @@ label {
 .rating-text {
 	font-size: 12px;
 }
+
+form {
+	width: 200px;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+input {
+	border: none;
+	border-bottom: 1px solid blueviolet;
+}
+
+input::placeholder,
+textarea::placeholder {
+	font-size: 15px;
+	color: lightblue;
+}
+
+.submitButton {
+	border: none;
+	padding: 10px;
+	border-radius: 10px;
+	color: white;
+	background-color: blueviolet;
+	cursor: pointer;
+}
