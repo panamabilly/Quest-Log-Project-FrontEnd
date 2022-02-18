@@ -7,7 +7,7 @@ import axios from 'axios';
 import { format } from 'timeago.js';
 
 function Map() {
-	const currentUser = 'boarderchick1982';
+	const [currentUser, setCurrentUser] = useState(null);
 	const [pins, setPins] = useState([]);
 	const [currentLocation, setCurrentLocation] = useState(null);
 	const [title, setTitle] = useState(null);
@@ -63,17 +63,31 @@ function Map() {
 			setPinCurrentLocation(null);
 		} catch (err) {
 			console.log(err);
-		}JSON.stringify
+		}
+	};
+
+	return (
+		<div>
+			<MapGL
+				{...viewState}
+				onMove={(evt) => setViewState(evt.viewState)}
+				style={{ width: '95vw', height: '95vh' }}
+				mapStyle='mapbox://styles/panamabilly/ckzpxm04w000p15qd0u7zvdgs'
+				onDblClick={handleDoubleClick}>
+				<GeolocateControl />
+				{pins.map((p) => (
+					<>
 						<Marker
 							latitude={p.lat}
 							longitude={p.long}
-							offsetLeft={-5}
-							offsetTop={-5}
+							offsetLeft={-viewState.zoom * 2.5}
+							offsetTop={-viewState.zoom * 5}
 							draggable={false}>
 							<RoomIcon
 								style={{
 									color: p.userName === currentUser ? 'yellow' : 'purple',
 									cursor: 'pointer',
+									fontSize: viewState.zoom * 5,
 								}}
 								onClick={() => handleSingleClick(p._id, p.lat, p.long)}
 							/>
@@ -139,6 +153,11 @@ function Map() {
 						</div>
 					</Popup>
 				)}
+				<div className='buttons'>
+					<button className='button-logout'>Log Out</button>
+					<button className='button-login'>Log In</button>
+					<button className='button-register'>Register</button>
+				</div>
 			</MapGL>
 		</div>
 	);
