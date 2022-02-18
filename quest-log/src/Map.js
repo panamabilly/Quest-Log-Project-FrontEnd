@@ -25,7 +25,7 @@ function Map() {
 	useEffect(() => {
 		const getPins = async () => {
 			try {
-				const res = await axios.get('/pins');
+				const res = await axios.get('http://localhost:7000/api/pins');
 				setPins(res.data);
 			} catch (err) {
 				console.log(err);
@@ -45,37 +45,25 @@ function Map() {
 		setPinCurrentLocation({ long: lng, lat: lat });
 	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const newPin = {
-			user: currentUser,
-			title,
-			description,
-			rating,
-			lat: pinCurrentLocation.lat,
-			long: pinCurrentLocation.long,
-		};
-	};
 
-	try {
-		const res = axios.post('/pins', newPin);
-		setPins([...pins, res.data]);
-		setPinCurrentLocation(null);
-	} catch (err) {
-		console.log(err);
-	}
-
-	return (
-		<div>
-			<MapGL
-				{...viewState}
-				onMove={(evt) => setViewState(evt.viewState)}
-				style={{ width: '95vw', height: '95vh' }}
-				mapStyle='mapbox://styles/panamabilly/ckzpxm04w000p15qd0u7zvdgs'
-				onDblClick={handleDoubleClick}>
-				<GeolocateControl />
-				{pins.map((p) => (
-					<>
+		try {
+			const newPin = {
+				userName: currentUser,
+				title,
+				description,
+				rating: parseInt(rating),
+				lat: pinCurrentLocation.lat,
+				long: pinCurrentLocation.long,
+			};
+			console.log(JSON.stringify(newPin));
+			const res = await axios.post('http://localhost:7000/api/pins', newPin);
+			setPins([...pins, res.data]);
+			setPinCurrentLocation(null);
+		} catch (err) {
+			console.log(err);
+		}JSON.stringify
 						<Marker
 							latitude={p.lat}
 							longitude={p.long}
@@ -137,13 +125,13 @@ function Map() {
 									placeholder='Enter a review'
 									onChange={(e) => setDescription(e.target.value)}></textarea>
 								<label>Rating</label>
-								<selecton onChange={(e) => setRating(e.target.value)}>
+								<select onChange={(e) => setRating(e.target.value)}>
 									<option value='1'>1</option>
 									<option value='2'>2</option>
 									<option value='3'>3</option>
 									<option value='4'>4</option>
 									<option value='5'>5</option>
-								</selecton>
+								</select>
 								<button className='submitButton' type='submit'>
 									Add Pin
 								</button>
