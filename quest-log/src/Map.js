@@ -14,7 +14,6 @@ function Map() {
 	const [description, setDescription] = useState(null);
 	const [rating, setRating] = useState(0);
 	const [pinCurrentLocation, setPinCurrentLocation] = useState(null);
-	q;
 	const [viewState, setViewState] = useState({
 		width: '95vw',
 		height: '95vh',
