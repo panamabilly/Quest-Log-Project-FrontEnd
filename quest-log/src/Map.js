@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MapGL, { GeolocateControl, Marker, Popup } from '!react-map-gl';
+import MapGL, { GeolocateControl, Marker, Popup } from 'react-map-gl';
 import { useState, useEffect } from 'react';
 import RoomIcon from '@material-ui/icons/Room';
 import './Map.css';
