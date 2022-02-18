@@ -1,0 +1,90 @@
+.popup-card {
+	width: 200px;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+label {
+	color: blueviolet;
+	font-size: 15px;
+	font-weight: bold;
+	border-bottom: 1px solid blueviolet;
+	margin: 5px 0;
+}
+
+.description-text,
+.place-text,
+.rating-text {
+	font-size: 12px;
+}
+
+form {
+	width: 200px;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+input {
+	border: none;
+	border-bottom: 1px solid blueviolet;
+}
+
+input::placeholder,
+textarea::placeholder {
+	font-size: 15px;
+	color: lightblue;
+}
+
+.submitButton {
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	color: white;
+	background-color: blueviolet;
+	cursor: pointer;
+}
+
+.button {
+	border: none;
+	padding: 15 px;
+	border-radius: 5px;
+	color: white;
+}
+
+.button-logout {
+	background-color: tomato;
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button-login {
+	background-color: teal;
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button-register {
+	background-color: blueviolet;
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.buttons,
+.logout {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
