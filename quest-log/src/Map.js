@@ -1,10 +1,11 @@
 import * as React from 'react';
-import MapGL, { GeolocateControl, Marker, Popup } from '!react-map-gl';
+import MapGL, { GeolocateControl, Marker, Popup } from 'react-map-gl';
 import { useState, useEffect } from 'react';
 import RoomIcon from '@material-ui/icons/Room';
 import './Map.css';
 import axios from 'axios';
 import { format } from 'timeago.js';
+import mapboxgl from '!mapbox-gl';
 
 function Map() {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -13,7 +14,8 @@ function Map() {
 	const [title, setTitle] = useState(null);
 	const [description, setDescription] = useState(null);
 	const [rating, setRating] = useState(0);
-	const [pinCurrentLocation, setPinCurrentLocation] = useState(null);q
+	const [pinCurrentLocation, setPinCurrentLocation] = useState(null);
+	q;
 	const [viewState, setViewState] = useState({
 		width: '95vw',
 		height: '95vh',
