@@ -5,6 +5,13 @@ import RoomIcon from '@material-ui/icons/Room';
 import './Map.css';
 import axios from 'axios';
 import { format } from 'timeago.js';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import mapboxgl from 'mapbox-gl';
+
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass =
+	require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 function Map() {
 	const [currentUser, setCurrentUser] = useState(null);
