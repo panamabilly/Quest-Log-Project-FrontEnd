@@ -20,7 +20,10 @@ function Register({ setShowRegister }) {
 		};
 
 		try {
-			await axios.post('http://localhost:7000/users/register', newUser);
+			await axios.post(
+				'https://quest-log-backend.herokuapp.com/api/users/',
+				newUser
+			);
 			setSuccess(true);
 			setError(false);
 		} catch (err) {

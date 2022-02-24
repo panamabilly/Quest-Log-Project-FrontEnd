@@ -13,12 +13,12 @@ function Login({ setShowLogin, storage, setCurrentUser }) {
 		event.preventDefault();
 		const user = {
 			userName: nameRef.current.value,
-			password: passwordqRef.current.value,
+			password: passwordRef.current.value,
 		};
 
 		try {
 			const response = await axios.post(
-				'http://localhost:7000/users/login',
+				'https://quest-log-backend.herokuapp.com/api/users/',
 				user
 			);
 			storage.setItem('user', response.data.userName);

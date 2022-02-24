@@ -11,13 +11,11 @@ import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 import Register from './components/Register';
 import Login from './components/Login';
 
-mapboxgl.accessToken =
-	'pk.eyJ1IjoicGFuYW1hYmlsbHkiLCJhIjoiY2wwMDUxa3VyMGdvMjNscWhsdzlsdGg0ZSJ9.cVIiUKTUn0Bb0R2VZczmvQ';
 mapboxgl.workerClass = MapboxWorker;
 
 function Map() {
 	const storage = window.localStorage;
-	const [currentUser, setCurrentUser] = useState(storage.getItem('user'));
+	const [currentUser, setCurrentUser] = useState('adminuser');
 	const [pins, setPins] = useState([]);
 	const [currentLocation, setCurrentLocation] = useState(null);
 	const [title, setTitle] = useState(null);
@@ -26,7 +24,6 @@ function Map() {
 	const [pinCurrentLocation, setPinCurrentLocation] = useState(null);
 	const [showRegister, setShowRegister] = useState(false);
 	const [showLogin, setShowLogin] = useState(false);
-
 	const [viewState, setViewState] = useState({
 		width: '95vw',
 		height: '95vh',
@@ -38,7 +35,9 @@ function Map() {
 	useEffect(() => {
 		const getPins = async () => {
 			try {
-				const res = await axios.get('http://localhost:7000/api/pins');
+				const res = await axios.get(
+					'https://quest-log-backend.herokuapp.com/api/pins'
+				);
 				setPins(res.data);
 			} catch (err) {
 				console.log(err);
@@ -71,7 +70,10 @@ function Map() {
 				long: pinCurrentLocation.long,
 			};
 			console.log(JSON.stringify(newPin));
-			const res = await axios.post('http://localhost:7000/api/pins', newPin);
+			const res = await axios.post(
+				'https://quest-log-backend.herokuapp.com/api/pins',
+				newPin
+			);
 			setPins([...pins, res.data]);
 			setPinCurrentLocation(null);
 		} catch (err) {
