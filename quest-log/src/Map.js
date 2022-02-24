@@ -93,6 +93,7 @@ function Map() {
 				style={{ width: '95vw', height: '95vh' }}
 				mapStyle='mapbox://styles/panamabilly/cl00ipmyg000014p0ksriadde'
 				onDblClick={handleDoubleClick}>
+				mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
 				<GeolocateControl />
 				{pins.map((p) => (
 					<>
