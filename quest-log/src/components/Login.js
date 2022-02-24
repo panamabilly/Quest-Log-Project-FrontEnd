@@ -13,7 +13,7 @@ function Login({ setShowLogin, storage, setCurrentUser }) {
 		event.preventDefault();
 		const user = {
 			userName: nameRef.current.value,
-			password: nameRef.current.value,
+			password: passwordqRef.current.value,
 		};
 
 		try {
