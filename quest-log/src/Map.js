@@ -5,22 +5,25 @@ import RoomIcon from '@material-ui/icons/Room';
 import './Map.css';
 import axios from 'axios';
 import { format } from 'timeago.js';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
-
-// @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax
-mapboxgl.workerClass =
-	require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+import Register from './components/Register';
+import Login from './components/Login';
+
+mapboxgl.workerClass = MapboxWorker;
 
 function Map() {
-	const [currentUser, setCurrentUser] = useState(null);
+	const storage = window.localStorage;
+	const [currentUser, setCurrentUser] = useState('adminuser');
 	const [pins, setPins] = useState([]);
 	const [currentLocation, setCurrentLocation] = useState(null);
 	const [title, setTitle] = useState(null);
 	const [description, setDescription] = useState(null);
 	const [rating, setRating] = useState(0);
 	const [pinCurrentLocation, setPinCurrentLocation] = useState(null);
+	const [showRegister, setShowRegister] = useState(false);
+	const [showLogin, setShowLogin] = useState(false);
 	const [viewState, setViewState] = useState({
 		width: '95vw',
 		height: '95vh',
@@ -32,7 +35,9 @@ function Map() {
 	useEffect(() => {
 		const getPins = async () => {
 			try {
-				const res = await axios.get('http://localhost:7000/api/pins');
+				const res = await axios.get(
+					'https://quest-log-backend.herokuapp.com/api/pins'
+				);
 				setPins(res.data);
 			} catch (err) {
 				console.log(err);
@@ -65,12 +70,19 @@ function Map() {
 				long: pinCurrentLocation.long,
 			};
 			console.log(JSON.stringify(newPin));
-			const res = await axios.post('http://localhost:7000/api/pins', newPin);
+			const res = await axios.post(
+				'https://quest-log-backend.herokuapp.com/api/pins',
+				newPin
+			);
 			setPins([...pins, res.data]);
 			setPinCurrentLocation(null);
 		} catch (err) {
 			console.log(err);
 		}
+	};
+	const handleLogout = () => {
+		storage.removeItem('user');
+		setCurrentUser(null);
 	};
 
 	return (
@@ -79,7 +91,7 @@ function Map() {
 				{...viewState}
 				onMove={(evt) => setViewState(evt.viewState)}
 				style={{ width: '95vw', height: '95vh' }}
-				mapStyle='mapbox://styles/panamabilly/ckzpxm04w000p15qd0u7zvdgs'
+				mapStyle='mapbox://styles/panamabilly/cl00ipmyg000014p0ksriadde'
 				onDblClick={handleDoubleClick}>
 				<GeolocateControl />
 				{pins.map((p) => (
@@ -139,14 +151,16 @@ function Map() {
 								<label>Title</label>
 								<input
 									placeholder='Enter a title'
-									onChange={(e) => setTitle(e.target.value)}
+									onChange={(event) => setTitle(event.target.value)}
 								/>
 								<label>Review</label>
 								<textarea
 									placeholder='Enter a review'
-									onChange={(e) => setDescription(e.target.value)}></textarea>
+									onChange={(event) =>
+										setDescription(event.target.value)
+									}></textarea>
 								<label>Rating</label>
-								<select onChange={(e) => setRating(e.target.value)}>
+								<select onChange={(event) => setRating(event.target.value)}>
 									<option value='1'>1</option>
 									<option value='2'>2</option>
 									<option value='3'>3</option>
@@ -160,11 +174,30 @@ function Map() {
 						</div>
 					</Popup>
 				)}
-				<div className='buttons'>
-					<button className='button-logout'>Log Out</button>
-					<button className='button-login'>Log In</button>
-					<button className='button-register'>Register</button>
-				</div>
+				{currentUser ? (
+					<button className='button-logout' onClick={handleLogout}>
+						Log Out
+					</button>
+				) : (
+					<div className='buttons'>
+						<button className='button-login' onClick={() => setShowLogin(true)}>
+							Log In
+						</button>
+						<button
+							className='button-register'
+							onClick={() => setShowRegister(true)}>
+							Register
+						</button>
+					</div>
+				)}
+				{showRegister && <Register setShowRegister={setShowRegister} />}
+				{showLogin && (
+					<Login
+						setShowLogin={setShowLogin}
+						storage={storage}
+						setCurrentUser={setCurrentUser}
+					/>
+				)}
 			</MapGL>
 		</div>
 	);
