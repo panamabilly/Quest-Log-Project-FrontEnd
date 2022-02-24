@@ -16,8 +16,8 @@ mapboxgl.accessToken =
 mapboxgl.workerClass = MapboxWorker;
 
 function Map() {
-	const [currentUser, setCurrentUser] = useState(null);
-
+	const storage = window.localStorage;
+	const [currentUser, setCurrentUser] = useState(storage.getItem('user'));
 	const [pins, setPins] = useState([]);
 	const [currentLocation, setCurrentLocation] = useState(null);
 	const [title, setTitle] = useState(null);
@@ -77,6 +77,10 @@ function Map() {
 		} catch (err) {
 			console.log(err);
 		}
+	};
+	const handleLogout = () => {
+		storage.removeItem('user');
+		setCurrentUser(null);
 	};
 
 	return (
@@ -169,7 +173,9 @@ function Map() {
 					</Popup>
 				)}
 				{currentUser ? (
-					<button className='button-logout'>Log Out</button>
+					<button className='button-logout' onClick={handleLogout}>
+						Log Out
+					</button>
 				) : (
 					<div className='buttons'>
 						<button className='button-login' onClick={() => setShowLogin(true)}>
@@ -183,7 +189,13 @@ function Map() {
 					</div>
 				)}
 				{showRegister && <Register setShowRegister={setShowRegister} />}
-				{showLogin && <Login setShowLogin={setShowLogin} />}
+				{showLogin && (
+					<Login
+						setShowLogin={setShowLogin}
+						storage={storage}
+						setCurrentUser={setCurrentUser}
+					/>
+				)}
 			</MapGL>
 		</div>
 	);
