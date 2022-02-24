@@ -26,7 +26,7 @@ MERN Stack (Full Stack Application)
 
 ### Technologies used
 
--MongoDB -Express.js -React.js -Node.js -CSS -MapBox GL JS -Timeago.js -MUI Icons -Axios
+-MongoDB -Express.js -React.js -Node.js -CSS -MapBox GL JS -Timeago.js -MUI Icons -Axios -Bcrypt(password-hashing)
 
 ### User stories
 
@@ -48,3 +48,5 @@ MERN Stack (Full Stack Application)
 -I left the project open-ended so I can build some more app development/programming skills in my free time. I would like to implement a photo upload system. I would also like to build up the api to show information about ski resorts in the Western United States for users to have as a reference I set up the start of a user authentication system in the back-end but due to time constraints it will need to be implemented later. I recently tested the app in a mobile phone and discovered that the double click gesture does not work using a touch screen and I would like to incorporate mobile functionality with the app.
 
 I had a major hurdle in deployement trying to get the token authorization to work on the deployed app, apparently the .env file is read by react but needs to be explicitly linked within the code to work in the web deployment using netlify.
+
+### Screenshots
