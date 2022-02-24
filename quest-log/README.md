@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Quest-Log | Track your adventures
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Application Summary
 
-## Available Scripts
+The goal of this application is for the user to drop a marker on any location around the globe (by simply double-clicking) and have the ability to add notes specific to the place they have visited. You can use the application to recall memories of past vacations/trips or use it as a inspiration for new quests around the globe. Users are able to see their own pins marked in yellow and other users in purple. Users are able to read other users comments by selecting them on the map.
 
-In the project directory, you can run:
+### Installation
 
-### `npm start`
+Clone down the repository and run in the terminal of the root folder
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+npm i
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+and then
 
-### `npm test`
+```
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+or please stop by and take look at the [web app](https://quest-log-frontend.netlify.app/)
 
-### `npm run build`
+### Stack Utilized for Frontend/Backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+MERN Stack (Full Stack Application)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Technologies used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-MongoDB -Express.js -React.js -Node.js -CSS -MapBox GL JS -Timeago.js -MUI Icons -Axios -Bcrypt(password-hashing)
 
-### `npm run eject`
+### User stories
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### MVP
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-As a user, I want to be able to pin locations that I have visited.
+-As a user, I want to be able to add information into a form about the place that I have visited.
+-As a user, I want my pins to be saved for future reference.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Post-MVP
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-As a user, I want to be able to create a profile so that I can save my own pins on the map.
+-As a user, I want to see what other users of the app have pinned around the world.
 
-## Learn More
+### Wireframes
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Unsolved Issues / Major Hurdles
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-I left the project open-ended so I can build some more app development/programming skills in my free time. I would like to implement a photo upload system. I would also like to build up the api to show information about ski resorts in the Western United States for users to have as a reference I set up the start of a user authentication system in the back-end but due to time constraints it will need to be implemented later. I recently tested the app in a mobile phone and discovered that the double click gesture does not work using a touch screen and I would like to incorporate mobile functionality with the app.
 
-### Code Splitting
+I had a major hurdle in deployement trying to get the token authorization to work on the deployed app, apparently the .env file is read by react but needs to be explicitly linked within the code to work in the web deployment using netlify.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Screenshots
